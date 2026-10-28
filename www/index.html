@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Filosofia Game – Estética e Universo</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;700&family=Nunito:wght@600;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg1:#fff1c9;--bg2:#cfeaff;--card:#fff;--ink:#2b2350;--mut:#6b6591;--pri:#6c4cf1;--ok:#22b573;--bad:#ef476f;--warn:#ffb703;--line:#e4dcff;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--bg1:#1d1740;--bg2:#0f3250;--card:#2a2358;--ink:#f3efff;--mut:#b9b2e6;--line:#463e8a}}
+:root[data-theme=dark]{--bg1:#1d1740;--bg2:#0f3250;--card:#2a2358;--ink:#f3efff;--mut:#b9b2e6;--line:#463e8a}
+*{box-sizing:border-box}html,body{margin:0}
+body{font-family:Nunito,system-ui,sans-serif;font-weight:600;color:var(--ink);background:linear-gradient(135deg,var(--bg1),var(--bg2)) fixed;min-height:100vh}
+h1,h2,h3,.btn,.lvl b{font-family:Fredoka,Nunito,sans-serif}
+header{display:flex;gap:8px;align-items:center;padding:10px 14px;background:var(--card);box-shadow:0 2px 10px #0002}
+header .logo{font:700 1.15rem Fredoka,sans-serif;flex:1}
+header input{width:90px;accent-color:var(--pri)}
+.ib{border:0;background:var(--line);color:var(--ink);font-size:1.2rem;border-radius:12px;padding:6px 10px;cursor:pointer}
+main{max-width:860px;margin:0 auto;padding:14px}
+.hero{text-align:center;padding:10px}.hero h1{font-size:clamp(2rem,8vw,3.2rem);margin:.2em 0;color:var(--pri)}
+h2{margin:1.2em 0 .5em}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}
+.card{background:var(--card);border-radius:18px;padding:14px;box-shadow:0 4px 0 var(--line),0 8px 18px #0002;border:2px solid var(--line)}
+button.card{font:inherit;color:inherit;cursor:pointer;text-align:center;transition:transform .15s}
+button.card:hover{transform:translateY(-4px) rotate(-1deg)}
+.lvl{display:flex;flex-direction:column;gap:4px;font-size:1rem}.lvl b{font-size:1.5rem}
+.lvl.f{border-color:var(--ok)}.lvl.n{border-color:var(--warn)}.lvl.d{border-color:var(--bad)}
+.gm{font-size:1.05rem}.gm i{display:block;font-size:2.2rem;font-style:normal}
+.btn{border:0;border-radius:14px;padding:10px 16px;font-size:1rem;font-weight:700;background:var(--pri);color:#fff;cursor:pointer;box-shadow:0 4px 0 #0003}
+.btn.g{background:var(--line);color:var(--ink)}.btn.w{background:var(--warn);color:#2b2350}
+.btn:active{transform:translateY(3px);box-shadow:none}
+.bar{display:flex;flex-wrap:wrap;gap:8px;justify-content:space-between;align-items:center;margin:8px 0}
+.tm{height:14px;background:var(--line);border-radius:9px;overflow:hidden}.tm i{display:block;height:100%;background:linear-gradient(90deg,var(--ok),var(--warn),var(--bad));background-size:300% 100%;transition:width .1s linear}
+.q{font:700 clamp(1.15rem,4.5vw,1.5rem) Fredoka,sans-serif;margin:14px 0}
+.opt{display:block;width:100%;margin:8px 0;padding:12px 14px;border-radius:14px;border:3px solid var(--line);background:var(--card);color:var(--ink);font:800 1rem Nunito,sans-serif;text-align:left;cursor:pointer}
+.opt:hover{border-color:var(--pri)}.opt.ok{background:var(--ok);color:#fff;border-color:var(--ok)}.opt.no{background:var(--bad);color:#fff;border-color:var(--bad);animation:sh .4s}
+@keyframes sh{25%{transform:translateX(-8px)}75%{transform:translateX(8px)}}
+.hint{min-height:1.5em;color:var(--mut)}
+.ov{position:fixed;inset:0;background:#000a;display:flex;align-items:center;justify-content:center;padding:20px;z-index:9}
+.ov .card{max-width:420px;text-align:center}.big{font-size:3.5rem}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.m{display:block;width:100%;margin:6px 0;padding:10px;border-radius:12px;border:3px solid var(--line);background:var(--card);color:var(--ink);font:700 .95rem Nunito,sans-serif;cursor:pointer}
+.m.sel{border-color:var(--pri);transform:scale(1.04)}.m.done{color:#2b2350;pointer-events:none}.m.bad{animation:sh .4s;border-color:var(--bad)}
+.mg{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.mc{aspect-ratio:1;border-radius:14px;border:3px solid var(--line);background:var(--pri);color:#fff;font:700 .85rem Nunito,sans-serif;cursor:pointer;padding:4px;display:flex;align-items:center;justify-content:center;text-align:center}
+.mc b{display:none}.mc.f{background:var(--card);color:var(--ink)}.mc.f b{display:block}.mc.f i{display:none}.mc.ok{background:var(--ok);color:#fff}
+.mc i{font-size:1.8rem;font-style:normal}
+.ws{display:grid;gap:3px;max-width:430px;margin:auto}
+.ws button{aspect-ratio:1;border:0;border-radius:8px;background:var(--card);color:var(--ink);font:700 1rem Fredoka,sans-serif;cursor:pointer;padding:0}
+.ws button.s{background:var(--warn)}.ws button.fd{background:var(--ok);color:#fff}
+.wl{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0}.wl span{background:var(--card);padding:4px 10px;border-radius:20px}.wl .fd{background:var(--ok);color:#fff;text-decoration:line-through}
+.cw{overflow-x:auto;padding:6px 0}.cr{display:flex;align-items:center;margin:4px 0;white-space:nowrap}
+.cr b{display:inline-block;width:1.8em;font-family:Fredoka}
+.cr input{width:min(6.2vw,1.9rem);height:min(6.8vw,2.1rem);margin:1px;padding:0;text-align:center;text-transform:uppercase;border:2px solid var(--line);border-radius:6px;background:var(--card);color:var(--ink);font:700 1rem Fredoka,sans-serif}
+.cr input.k{background:var(--warn);color:#2b2350;border-color:#e09f00}.cr input.r{border-color:var(--ok)}.cr input.x{border-color:var(--bad)}
+details.card{margin:10px 0}summary{font:700 1.15rem Fredoka,sans-serif;cursor:pointer}details ul{margin:.6em 0 0;padding-left:1.2em;line-height:1.6}
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--ink);color:var(--card);padding:10px 18px;border-radius:20px;z-index:20}
+@media(max-width:520px){header input{width:64px}}
+</style></head><body>
+<header><span class="logo">🌌 Filosofia Game</span><button class="ib" onclick="home()" title="Início">🏠</button><button class="ib" id="mb" onclick="mt()" title="Som">🔊</button><input id="vs" type="range" min="0" max="100" value="50" title="Volume" oninput="vl(this.value)"></header>
+<main id="app"></main>
+<script>
+const $=s=>document.querySelector(s),app=$('#app'),sh=a=>{a=[...a];for(let i=a.length;i>1;){let j=Math.random()*i--|0;[a[i],a[j]]=[a[j],a[i]]}return a};
+const E=h=>{app.innerHTML=h;scrollTo(0,0)};let T;
+const toast=t=>{const d=document.createElement('div');d.className='toast';d.textContent=t;document.body.append(d);setTimeout(()=>d.remove(),1800)};
+/* ===== ÁUDIO (gerado no navegador) ===== */
+let AC,G,vol=.5,mute=0,MT,last=-1;
+const TR=[{r:261.6,s:[0,2,4,7,9],b:104,w:'triangle'},{r:220,s:[0,3,5,7,10],b:92,w:'sine'},{r:293.7,s:[0,2,4,5,7,9,11],b:120,w:'square'},{r:196,s:[0,2,3,7,8],b:84,w:'triangle'},{r:329.6,s:[0,2,4,7,9],b:132,w:'sine'}];
+function au(){if(!AC){AC=new(window.AudioContext||window.webkitAudioContext)();G=AC.createGain();G.connect(AC.destination);G.gain.value=mute?0:vol}if(AC.state=='suspended')AC.resume()}
+function tn(f,d,ty,g,t0=0){if(!AC)return;const o=AC.createOscillator(),x=AC.createGain(),t=AC.currentTime+t0;o.type=ty;o.frequency.value=f;x.gain.setValueAtTime(g,t);x.gain.exponentialRampToValueAtTime(.001,t+d);o.connect(x);x.connect(G);o.start(t);o.stop(t+d)}
+function music(){au();clearInterval(MT);let i;do i=Math.random()*TR.length|0;while(i==last);last=i;const k=TR[i],f=s=>k.r*2**(s/12);let n=0;MT=setInterval(()=>{if(n%4==0)tn(f(k.s[0])/2,.5,'sine',.12);if(n%4==2)tn(f(k.s[2])/2,.4,'sine',.08);if(Math.random()<.65)tn(f(k.s[Math.random()*k.s.length|0]+(Math.random()<.3?12:0)),.35,k.w,.07);n++},30000/k.b)}
+const ok=()=>[523,659,784,1047].forEach((f,i)=>tn(f,.25,'triangle',.18,i*.08)),bad=()=>{tn(220,.3,'sawtooth',.14);tn(165,.4,'sawtooth',.14,.15)};
+function vl(v){vol=v/100;if(G)G.gain.value=mute?0:vol}
+function mt(){au();mute=!mute;G.gain.value=mute?0:vol;$('#mb').textContent=mute?'🔇':'🔊'}
+document.addEventListener('pointerdown',()=>{if(!MT)music()},{once:true});
+/* ===== DADOS ===== */
+const Q=[
+['O que é a Estética?','Área da Filosofia que estuda a beleza, a arte e o gosto','Estudo das estrelas e planetas','Ciência que estuda o corpo humano','Técnica de pintar quadros','Pense em beleza e arte.'],
+['Quem organizou a Estética como campo da Filosofia no século XVIII?','Alexander Baumgarten','Pitágoras','Galileu Galilei','Albert Camus','Ele era alemão e ligou a Estética à sensibilidade.'],
+['Para Pitágoras, a beleza estava ligada…','à harmonia dos números e às proporções','ao mundo das ideias','à utilidade dos objetos','ao preço das obras','Pense em matemática.'],
+['Segundo Platão, a verdadeira beleza existe…','no mundo das ideias','só nas obras de arte','nos números','nas redes sociais','Lá o belo é perfeito e imutável.'],
+['O que é a catarse, para Aristóteles?','Alívio emocional provocado pela arte','Medo do universo','Uma técnica de pintura','Um tipo de número','Surge ao assistir uma tragédia.'],
+['Quando Kant diz que a apreciação estética é “desinteressada”, quer dizer que…','gostamos de algo pelo prazer, sem pensar em utilidade ou preço','ninguém gosta da obra','a arte não tem valor','só vale o que é caro','Não depende de vantagem pessoal.'],
+['Por que a beleza pode ser considerada subjetiva?','Porque depende de quem observa','Porque é igual para todos','Porque só existe na natureza','Porque é medida em números','Cada pessoa tem gostos e experiências diferentes.'],
+['O que é o sublime para Kant?','Sensação de admiração e temor diante de algo grandioso','Uma obra pequena e delicada','Um tipo de música','Um instrumento científico','Pense em um vulcão em erupção.'],
+['Qual obra de Picasso mostra o sofrimento causado pela guerra?','Guernica','Mona Lisa','Timeu','A Criação','Tem formas distorcidas e fragmentadas.'],
+['O que as redes sociais podem causar quando filtros viram “o modelo correto”?','Comparações e insatisfação com o próprio corpo','Mais respeito às diferenças','O fim dos padrões de beleza','Mais diversidade','As imagens são idealizadas.'],
+['A palavra cosmos significa…','ordem ou harmonia','desordem','escuridão','telescópio','É o contrário de caos.'],
+['O caos está relacionado a…','desordem e ausência de organização','harmonia','números','beleza perfeita','É o oposto de cosmos.'],
+['Quem apresentou o demiurgo na obra Timeu?','Platão','Kant','Nietzsche','Picasso','Ele organiza o universo com razão e matemática.'],
+['No geocentrismo, quem ocupa o centro do universo?','A Terra','O Sol','A Lua','Júpiter','“Geo” lembra Terra.'],
+['No heliocentrismo, o centro do Sistema Solar é…','o Sol','a Terra','a Lua','Marte','“Hélio” lembra Sol.'],
+['Que instrumento Galileu usou para fortalecer o heliocentrismo?','Telescópio','Microscópio','Bússola','Relógio','Serve para observar os astros.'],
+['Para Nietzsche, o ser humano…','não é o centro de toda a realidade','é o centro do universo','existe para sempre','não tem valor algum','O universo existia antes de nós.'],
+['A reflexão de Nietzsche nos convida a…','valorizar o tempo que temos e cuidar do planeta','desistir de viver','ignorar a natureza','achar que a razão não tem limites','Nossa existência é passageira.'],
+['Kierkegaard foi um dos precursores de qual corrente?','Existencialismo','Heliocentrismo','Geocentrismo','Pitagorismo','Fala de existência, liberdade e escolhas.'],
+['Para Kierkegaard, a angústia…','pode nos levar a refletir sobre quem somos','é sempre ruim e inútil','é só alegria','impede qualquer escolha','Ela surge diante das decisões.'],
+['Uma vida autêntica é aquela em que a pessoa…','vive de acordo com suas convicções e assume suas escolhas','copia os outros','foge das responsabilidades','nunca faz escolhas','Autêntico = verdadeiro consigo mesmo.'],
+['O absurdo, segundo Camus, nasce do conflito entre…','o desejo de sentido e o silêncio do universo','o Sol e a Terra','a arte e a natureza','números e letras','Queremos respostas, mas o universo não dá todas.'],
+['O que é a “revolta contra o absurdo”?','Continuar vivendo e agindo sem se entregar ao desespero','Desistir de tudo','Negar que o universo existe','Fugir dos outros','Camus não manda desistir.'],
+['Para Camus, o que torna a existência mais rica?','Solidariedade e cuidado com os outros','Ficar isolado','Só ter bens','Ignorar as escolhas','Pense em ajudar quem precisa.'],
+['Viver eticamente significa…','agir com respeito, responsabilidade e solidariedade','pensar só em si','ignorar o meio ambiente','não ter atitudes','Pense no bem-estar de todos.'],
+['Qual destas é uma atitude ética?','Preservar a natureza','Desrespeitar as diferenças','Ignorar quem precisa','Poluir os rios','Cuidar do planeta e das pessoas.']];
+const LV={f:{n:'Fácil',i:'🌱',s:90,l:3,t:'1:30 min'},n:{n:'Normal',i:'⚡',s:60,l:4,t:'1:00 min'},d:{n:'Difícil',i:'🔥',s:30,l:5,t:'0:30 s'}};
+const MS=[
+{n:'🔗 Ligue as colunas: filósofo e ideia',p:[['Pitágoras','Beleza na harmonia dos números'],['Platão','Belo perfeito no mundo das ideias'],['Aristóteles','Arte provoca catarse'],['Kant','Beleza é subjetiva e desinteressada'],['Galileu','Telescópio e heliocentrismo'],['Nietzsche','Humano não é o centro do universo'],['Kierkegaard','Angústia e vida autêntica'],['Camus','Absurdo e revolta']]},
+{n:'🔤 Relacione as palavras',p:[['Cosmos','Ordem e harmonia'],['Caos','Desordem'],['Geocentrismo','Terra no centro'],['Heliocentrismo','Sol no centro'],['Sublime','Admiração e temor diante do grandioso'],['Catarse','Alívio emocional'],['Existencialismo','Reflete sobre existência e liberdade'],['Demiurgo','Criador do universo no Timeu']]},
+{n:'❓ Associe a pergunta à resposta',p:[['O que é Estética?','Estuda beleza, arte e gosto'],['Quem organizou a Estética no século XVIII?','Baumgarten'],['Quem usou o telescópio?','Galileu'],['O que é a revolta para Camus?','Viver sem se entregar ao desespero'],['O que é vida autêntica?','Viver conforme suas convicções'],['Qual obra mostra o sofrimento da guerra?','Guernica']]}];
+const MEM=[['Cosmos','Ordem'],['Caos','Desordem'],['Kant','Subjetiva'],['Platão','Mundo das ideias'],['Galileu','Telescópio'],['Camus','Absurdo'],['Picasso','Guernica'],['Catarse','Alívio']];
+const VF=[['A Estética estuda a beleza, a arte e o gosto artístico.',1,'Esse é o tema central da Estética.'],['Para Platão, a verdadeira beleza está no mundo físico.',0,'Ela está no mundo das ideias.'],['Pitágoras relacionava a beleza às proporções matemáticas.',1,'Harmonia dos números!'],['Kant dizia que a apreciação estética deve depender do preço da obra.',0,'Ela deve ser desinteressada.'],['O sublime é a sensação de admiração e até temor diante de algo grandioso.',1,'Como um vulcão ou o oceano.'],['Picasso só pintava figuras perfeitas e simétricas.',0,'Ele usou figuras distorcidas e fragmentadas.'],['Os padrões de beleza são históricos e culturais, e mudam com o tempo.',1,'Por isso não precisam ser iguais para todos.'],['Cosmos significa desordem.',0,'Cosmos é ordem; desordem é caos.'],['No heliocentrismo, a Terra está no centro do universo.',0,'Quem está no centro é o Sol.'],['Para Nietzsche, o universo continuará existindo depois dos seres humanos.',1,'Nossa existência é passageira.'],['Kierkegaard foi um dos precursores do existencialismo.',1,'Ele refletiu sobre escolhas e angústia.'],['Para Camus, diante do absurdo devemos desistir de viver.',0,'Ele propõe a revolta: continuar vivendo.'],['Viver eticamente é pensar só em si mesmo.',0,'Envolve respeito, solidariedade e cuidado.']];
+const CW=[['CATARSE',0,'Alívio emocional provocado pela arte (Aristóteles)'],['ABSURDO',6,'Conflito entre querer sentido e o universo não responder (Camus)'],['SUBLIME',0,'Admiração e temor diante de algo grandioso (Kant)'],['HARMONIA',3,'Os gregos ligavam a beleza à proporção e à…'],['DEMIURGO',7,'Criador que organiza o universo no Timeu de Platão'],['ANGUSTIA',4,'Sentimento diante das escolhas (Kierkegaard)']];
+/* ===== INÍCIO ===== */
+function home(){clearInterval(T);const g=[['🔗','Ligue as colunas','match(0)'],['🔤','Relacione as palavras','match(1)'],['❓','Pergunta e resposta','match(2)'],['🃏','Jogo da memória','mem()'],['✅','Verdadeiro ou falso','vf()'],['🔎','Caça-palavras','ws()'],['✏️','Cruzadinha','cw()'],['📖','Resumo para estudar','sum()']];
+E(`<section class="hero"><h1>🌌 Filosofia Game</h1><p>Estética e Universo Organizado · treino para a prova do 6º ano</p></section>
+<h2>🎮 Quiz principal: escolha o nível</h2><div class="grid">${Object.entries(LV).map(([k,v])=>`<button class="card lvl ${k}" onclick="quiz('${k}')"><b>${v.i} ${v.n}</b><span>⏱ ${v.t} por pergunta</span><span>${'❤️'.repeat(v.l)}</span></button>`).join('')}</div>
+<h2>🧩 Outros jogos para treinar</h2><div class="grid">${g.map(x=>`<button class="card gm" onclick="${x[2]}"><i>${x[0]}</i>${x[1]}</button>`).join('')}</div>`)}
+/* ===== QUIZ ===== */
+let Qs,lv,lives,sc,tot,left,lock,O;
+function quiz(k){au();music();lv=LV[k];lives=lv.l;sc=0;Qs=sh(Q);tot=Q.length;qn()}
+function qn(){clearInterval(T);if(!Qs.length)return win();lock=0;left=lv.s*10;const q=Qs[0];O=sh([q[1],q[2],q[3],q[4]]);
+E(`<div class="bar"><b>${'❤️'.repeat(lives)}${'🖤'.repeat(lv.l-lives)}</b><b>Pergunta ${tot-Qs.length+1} de ${tot}</b><b id="sec">⏱ ${lv.s}s</b></div><div class="tm"><i id="tb" style="width:100%"></i></div>
+<div class="card"><div class="q">${q[0]}</div>${O.map((t,i)=>`<button class="opt" onclick="ans(${i})">${'ABCD'[i]}) ${t}</button>`).join('')}<div class="hint" id="hint"></div></div>
+<div class="bar"><button class="btn w" onclick="hint()">💡 Dica</button><button class="btn g" onclick="skip()">⏭ Pular</button><button class="btn g" onclick="home()">🏠 Início</button></div>`);
+T=setInterval(()=>{left--;$('#tb').style.width=left/(lv.s*10)*100+'%';$('#sec').textContent='⏱ '+Math.ceil(left/10)+'s';if(left<=0){clearInterval(T);ans(-1)}},100)}
+function hint(){if(!lock)$('#hint').textContent='💡 '+Qs[0][5]}
+function skip(){if(lock)return;if(Qs.length<2)return toast('Última pergunta: não dá para pular!');Qs.push(Qs.shift());qn()}
+function ans(i){if(lock)return;lock=1;clearInterval(T);const q=Qs[0],b=[...document.querySelectorAll('.opt')],r=O.indexOf(q[1]);b[r].classList.add('ok');
+if(i==r){ok();sc++;Qs.shift();$('#hint').textContent='✅ Muito bem!'}else{bad();lives--;if(i>=0)b[i].classList.add('no');Qs.push(Qs.shift());$('#hint').textContent=i<0?'⏰ O tempo acabou! A pergunta volta no fim da fila.':'❌ Quase! A pergunta volta no fim da fila.'}
+setTimeout(()=>lives<=0?over():qn(),1500)}
+function over(){clearInterval(T);const d=document.createElement('div');d.className='ov';d.innerHTML=`<div class="card"><div class="big">💔</div><h2>Fim de jogo!</h2><p>Suas vidas acabaram. Você acertou ${sc} de ${tot}. Estude mais um pouquinho e tente de novo!</p><button class="btn" onclick="this.closest('.ov').remove();home()">Voltar ao início</button></div>`;document.body.append(d)}
+function win(){ok();E(`<div class="card" style="text-align:center"><div class="big">🏆🎉</div><h2>Você completou o quiz!</h2><p>Acertos: ${sc} de ${tot} · Vidas restantes: ${'❤️'.repeat(lives)}</p><p class="big">${lives>=lv.l-1?'⭐⭐⭐':lives>1?'⭐⭐':'⭐'}</p><button class="btn" onclick="home()">Voltar ao início</button></div>`)}
+/* ===== LIGUE / RELACIONE / ASSOCIE ===== */
+function match(i){clearInterval(T);const s=MS[i],L=s.p.map((p,j)=>[p[0],j]),R=sh(s.p.map((p,j)=>[p[1],j]));let sel=null,dn=0,er=0;
+E(`<h2>${s.n}</h2><p>Toque em um item da esquerda e depois no par certo da direita.</p><div class="bar"><b id="st">Acertos: 0/${L.length} · Erros: 0</b><button class="btn g" onclick="home()">🏠 Início</button></div><div class="cols"><div>${L.map(x=>`<button class="m" data-s="l" data-j="${x[1]}">${x[0]}</button>`).join('')}</div><div>${R.map(x=>`<button class="m" data-s="r" data-j="${x[1]}">${x[0]}</button>`).join('')}</div></div>`);
+app.onclick=e=>{const b=e.target.closest('.m');if(!b)return;au();if(b.dataset.s=='l'){document.querySelectorAll('.m.sel').forEach(x=>x.classList.remove('sel'));sel=b;b.classList.add('sel');return}
+if(!sel)return toast('Escolha primeiro um item da esquerda');if(sel.dataset.j==b.dataset.j){ok();[sel,b].forEach(x=>{x.classList.remove('sel');x.classList.add('done');x.style.background=`hsl(${b.dataset.j*45} 85% 75%)`});dn++;sel=null;if(dn==L.length)toast('🎉 Parabéns, você ligou tudo!')}else{bad();er++;b.classList.add('bad');setTimeout(()=>b.classList.remove('bad'),400)}
+$('#st').textContent=`Acertos: ${dn}/${L.length} · Erros: ${er}`}}
+/* ===== MEMÓRIA ===== */
+function mem(){clearInterval(T);const C=sh(MEM.flatMap((p,j)=>[[p[0],j],[p[1],j]]));let a=null,busy=0,mv=0,k=0;
+E(`<h2>🃏 Jogo da memória</h2><p>Encontre o termo e o seu par.</p><div class="bar"><b id="st">Jogadas: 0</b><button class="btn g" onclick="home()">🏠 Início</button></div><div class="mg">${C.map(c=>`<button class="mc" data-j="${c[1]}"><i>❓</i><b>${c[0]}</b></button>`).join('')}</div>`);
+app.onclick=e=>{const b=e.target.closest('.mc');if(!b||busy||b.classList.contains('f'))return;au();b.classList.add('f');if(!a){a=b;return}mv++;$('#st').textContent='Jogadas: '+mv;
+if(a.dataset.j==b.dataset.j){ok();[a,b].forEach(x=>x.classList.add('ok'));a=null;if(++k==MEM.length)toast('🎉 Memória de elefante!')}else{bad();busy=1;const p=a;a=null;setTimeout(()=>{p.classList.remove('f');b.classList.remove('f');busy=0},900)}}}
+/* ===== VERDADEIRO OU FALSO ===== */
+function vf(){clearInterval(T);const L=sh(VF);let n=0,s=0;
+const show=()=>{if(n>=L.length)return E(`<div class="card" style="text-align:center"><div class="big">🎯</div><h2>Você acertou ${s} de ${L.length}!</h2><button class="btn" onclick="vf()">Jogar de novo</button> <button class="btn g" onclick="home()">🏠 Início</button></div>`);
+E(`<h2>✅ Verdadeiro ou falso</h2><div class="bar"><b>${n+1}/${L.length}</b><b>Pontos: ${s}</b></div><div class="card"><div class="q">${L[n][0]}</div><div class="bar"><button class="btn" style="background:var(--ok)" onclick="vfa(1)">✅ Verdadeiro</button><button class="btn" style="background:var(--bad)" onclick="vfa(0)">❌ Falso</button></div><div class="hint" id="hint"></div></div><button class="btn g" onclick="home()">🏠 Início</button>`)};
+window.vfa=v=>{au();if($('#hint').dataset.d)return;const r=v==L[n][1];r?(ok(),s++):bad();$('#hint').dataset.d=1;$('#hint').innerHTML=`${r?'✅ Certo!':'❌ Errado.'} ${L[n][2]} <button class="btn w" onclick="vfn()">Próxima ➡</button>`};window.vfn=()=>{n++;show()};show()}
+/* ===== CAÇA-PALAVRAS ===== */
+function ws(){clearInterval(T);const W=['COSMOS','CAOS','KANT','CAMUS','PLATAO','BELEZA','SUBLIME','GALILEU','PICASSO','ETICA'],N=11,g=Array.from({length:N},()=>Array(N).fill('')),D=[[0,1],[1,0],[1,1]];
+W.forEach(w=>{for(let t=0;t<300;t++){const d=D[Math.random()*3|0],r=Math.random()*N|0,c=Math.random()*N|0;if(r+d[0]*(w.length-1)>=N||c+d[1]*(w.length-1)>=N)continue;if([...w].every((h,i)=>!g[r+d[0]*i][c+d[1]*i]||g[r+d[0]*i][c+d[1]*i]==h)){[...w].forEach((h,i)=>g[r+d[0]*i][c+d[1]*i]=h);break}}});
+const AZ='ABCDEFGHIJLMNOPRSTUV';g.forEach(r=>r.forEach((c,j)=>{if(!c)r[j]=AZ[Math.random()*AZ.length|0]}));let st=null,fd=0;
+E(`<h2>🔎 Caça-palavras</h2><p>Toque na primeira e na última letra da palavra (horizontal, vertical ou diagonal).</p><div class="wl">${W.map(w=>`<span id="w${w}">${w}</span>`).join('')}</div><div class="ws" style="grid-template-columns:repeat(${N},1fr)">${g.map((r,i)=>r.map((c,j)=>`<button data-r="${i}" data-c="${j}">${c}</button>`).join('')).join('')}</div><p><button class="btn g" onclick="home()">🏠 Início</button></p>`);
+const cell=(r,c)=>document.querySelector(`.ws [data-r="${r}"][data-c="${c}"]`);
+app.onclick=e=>{const b=e.target.closest('.ws button');if(!b)return;au();const r=+b.dataset.r,c=+b.dataset.c;if(!st){st=[r,c];b.classList.add('s');return}
+cell(...st).classList.remove('s');const dr=r-st[0],dc=c-st[1],n=Math.max(Math.abs(dr),Math.abs(dc))+1;let cs=[],t='';
+if(dr==0||dc==0||Math.abs(dr)==Math.abs(dc)){for(let i=0;i<n;i++){const x=cell(st[0]+Math.sign(dr)*i,st[1]+Math.sign(dc)*i);cs.push(x);t+=x.textContent}}
+const w=W.find(x=>x==t||x==[...t].reverse().join(''));if(w&&!$('#w'+w).classList.contains('fd')){ok();cs.forEach(x=>x.classList.add('fd'));$('#w'+w).classList.add('fd');if(++fd==W.length)toast('🎉 Achou todas as palavras!')}else bad();st=null}}
+/* ===== CRUZADINHA ===== */
+function cw(){clearInterval(T);const mk=Math.max(...CW.map(x=>x[1]));
+E(`<h2>✏️ Cruzadinha</h2><p>Preencha as palavras (sem acento). As casas amarelas formam a <b>palavra secreta</b>: a palavra grega que significa “ordem”.</p><div class="cw">${CW.map((x,r)=>`<div class="cr"><b>${r+1}.</b>${'<span style="display:inline-block;width:min(6.2vw,1.9rem);margin:1px"></span>'.repeat(mk-x[1])}${[...x[0]].map((c,i)=>`<input maxlength="1" data-a="${c}" class="${i==x[1]?'k':''}" oninput="cwn(this)">`).join('')}</div>`).join('')}</div><ol>${CW.map(x=>`<li>${x[2]}</li>`).join('')}</ol><button class="btn" onclick="cwc()">Conferir</button> <button class="btn g" onclick="home()">🏠 Início</button>`);
+window.cwn=i=>{au();const n=i.nextElementSibling;if(i.value&&n&&n.tagName=='INPUT')n.focus()};
+window.cwc=()=>{let all=1;document.querySelectorAll('.cr input').forEach(i=>{const r=i.value.toUpperCase()==i.dataset.a;i.classList.toggle('r',r);i.classList.toggle('x',!r&&!!i.value);if(!r)all=0});all?(ok(),toast('🎉 Cruzadinha completa: COSMOS!')):bad()}}
+/* ===== RESUMO ===== */
+function sum(){clearInterval(T);const S=[['🎨 O que é Estética?',['Área da Filosofia que estuda a <b>beleza, a arte e o gosto</b>.','Quem organizou como campo da Filosofia: <b>Baumgarten</b> (séc. XVIII).','A beleza varia de pessoa para pessoa, de cultura para cultura e de época para época.']],
+['🏛️ Beleza na Antiguidade',['<b>Pitágoras:</b> beleza = harmonia dos números e proporções.','<b>Platão:</b> o belo perfeito existe no mundo das ideias.','<b>Aristóteles:</b> a arte provoca emoções e a <b>catarse</b> (alívio emocional).','Renascimento: Leonardo da Vinci valorizou harmonia e proporção.']],
+['⚖️ Kant e o belo',['Beleza é <b>subjetiva</b>: depende de quem observa.','Apreciação <b>desinteressada</b>: gostar sem pensar em utilidade, preço ou vantagem.','Buscamos <b>universalidade</b>: esperamos que outros também achem belo.','<b>Sublime:</b> admiração, respeito e temor diante do grandioso.']],
+['🖼️ Arte moderna e redes sociais',['<b>Picasso</b> usou figuras distorcidas; em <b>Guernica</b> mostrou o sofrimento da guerra.','A arte também pode causar desconforto e denunciar problemas.','Filtros criam imagens idealizadas e podem gerar comparações e insatisfação.','Padrões de beleza são históricos e culturais: valorize a diversidade!']],
+['🌌 Cosmos e caos',['<b>Cosmos</b> = ordem e harmonia. <b>Caos</b> = desordem.','Pitágoras: o universo é organizado por princípios matemáticos e racionais.','Platão (<i>Timeu</i>): o <b>demiurgo</b> organiza o universo com razão.']],
+['🔭 Galileu e o heliocentrismo',['<b>Geocentrismo:</b> a Terra no centro.','<b>Heliocentrismo:</b> o Sol no centro do Sistema Solar.','Galileu usou o <b>telescópio</b> no século XVII e fortaleceu o heliocentrismo.']],
+['🧠 Nietzsche, Kierkegaard e Camus',['<b>Nietzsche:</b> o ser humano não é o centro do universo; a vida é passageira, mas vale a pena valorizá-la.','<b>Kierkegaard</b> (existencialismo): a <b>angústia</b> pode nos levar a pensar em quem somos; <b>vida autêntica</b> = viver conforme suas convicções.','<b>Camus:</b> <b>absurdo</b> = queremos sentido, mas o universo não responde tudo. Resposta: <b>revolta</b>, continuar vivendo com consciência e solidariedade.']],
+['🌱 Ética e responsabilidade',['Nossas atitudes têm consequências para pessoas, animais e meio ambiente.','Ética = respeito, responsabilidade, solidariedade.','Exemplos: preservar a natureza, respeitar diferenças, ajudar quem precisa.','<b>Ideia principal:</b> não precisamos ser o centro do universo para a vida ter valor.']]];
+E(`<h2>📖 Resumo para estudar</h2>${S.map((s,i)=>`<details class="card" ${i==0?'open':''}><summary>${s[0]}</summary><ul>${s[1].map(x=>`<li>${x}</li>`).join('')}</ul></details>`).join('')}<button class="btn" onclick="home()">🏠 Início</button>`)}
+home();
+</script></body></html>
